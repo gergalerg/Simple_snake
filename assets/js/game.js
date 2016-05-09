@@ -54,5 +54,38 @@ var Game = {
     randomY = Math.floor(Math.random() * 30) * squareSize;
 
     apple= game.add.sprite(randomX, randomY, 'apple'); 
+   },
+
+   update: function() {
+    if (cursors.right.isDown && direction != 'left')
+    {
+        new_direction = 'right';
+    }
+    else if (cursors.left.isDown && direction != 'right')
+    {
+        new_direction = 'left';
+    }
+    else if (cursors.up.isDown && direction != 'down')
+    {
+        new_direction = 'up';
+    }
+    else if (cursors.down.isDown && direction != 'up')
+    {
+        new_direction = 'down';
+    }
+
+    // formula to calculate game speed based on the score.
+    // the higher the score the higher the game speed.
+    speed = Math.min(10, Math.floor(score/5));
+
+    // update speed based on game screen
+    speedTextValue.text = '' + speed;
+
+    // increase a counter on every update call
+    updateDelay++;
+
+    
    }
+
+
 }
